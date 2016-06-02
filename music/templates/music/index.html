@@ -1,0 +1,19 @@
+<h2> Here are all my albums </h2>
+
+<ul>
+    {% if all_albums %}
+
+    {% for album in all_albums %}
+            <li> <a href="{{ album.id }}/"> {{ album.album_title }} </a></li>
+    {% endfor %}
+
+    {% else %}
+        <h3> Album section is empty </h3>
+{% endif %}
+
+</ul>
+<hr />
+<br/>
+<li><a href=" /music/add_album/"> Add-album </a></li>
+<li><a href=" /music/update_album/"> Update-album  </a></li>
+<li><a href=" /music/delete_album/"> Delete-album  </a></li>

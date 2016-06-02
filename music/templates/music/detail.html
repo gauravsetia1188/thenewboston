@@ -1,0 +1,26 @@
+<img src="{{album.album_logo.url}} " width="500" height="500" />
+<h1> {{ album.album_title }} </h1>
+<h2> {{ album.artist }} </h2>
+
+  <form action = "{% url 'music:favourite' album.id %}" method="post">
+       {% csrf_token %}
+      <p><strong><em> Tickmark your favourite song </em></strong></p>
+      {% for song in album.song_set.all %}
+          <input type="radio" name="song" value="{{ song.id }}" id="song{{forloop.counter}}" />
+
+          <label for="song{{forloop.counter}}">
+          {{ song.song_title }}
+          {% if song.is_favourite %}
+           **
+          {% endif %}
+          </label>
+          <br/>
+      {% endfor %}
+      <input type="submit"  value="favourite"/>
+        <br />
+        {% if error_message %}
+       <h3> {{ error_message }} </h3>
+      {% endif %}
+  </form>
+
+
